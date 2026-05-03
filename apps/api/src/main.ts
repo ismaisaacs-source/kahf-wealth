@@ -14,7 +14,7 @@ import { ZakatService } from "./modules/zakat/zakat.service";
 import { requireAuth } from "./lib/require-auth";
 
 const app = express();
-const port = Number(process.env.API_PORT ?? 4000);
+const port = Number(process.env.PORT ?? process.env.API_PORT ?? 4000);
 const estateService = new RuntimeEstateService();
 const profileService = new ProfileService();
 const screeningService = new ScreeningService();

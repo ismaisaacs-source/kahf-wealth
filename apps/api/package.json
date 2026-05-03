@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "cors": "^2.8.5",
+    "esbuild": "^0.25.0",
     "express": "^5.1.0",
     "firebase-admin": "^13.4.0",
     "google-logging-utils": "^1.1.3",
