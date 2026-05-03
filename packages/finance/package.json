@@ -1,0 +1,12 @@
+{
+  "name": "@kahf/finance",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "node ../../node_modules/typescript/bin/tsc -p tsconfig.json --noEmit",
+    "build": "node ../../node_modules/typescript/bin/tsc -p tsconfig.json --noEmit"
+  }
+}

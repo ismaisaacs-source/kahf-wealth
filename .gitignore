@@ -1,0 +1,13 @@
+.env
+.DS_Store
+node_modules/
+apps/mobile/node_modules/
+apps/api/dist/
+apps/api/data/exports/
+.expo/
+dist/
+.railway/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

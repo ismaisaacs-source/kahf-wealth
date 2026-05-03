@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "Kahf Wealth",
+    "slug": "kahf-wealth",
+    "scheme": "kahfwealth",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  }
+}
