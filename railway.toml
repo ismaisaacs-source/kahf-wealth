@@ -1,9 +1,0 @@
-[build]
-# Run npm ci at the monorepo root so all workspace packages and the lockfile are
-# available, then build the API bundle (esbuild reads tsconfig paths correctly).
-buildCommand = "npm ci && npm --workspace apps/api run build:runtime"
-
-[deploy]
-# Run the pre-built bundle directly; cwd is the repo root so Node walks up to
-# find workspace-hoisted packages in node_modules/.
-startCommand = "node apps/api/dist/main.js"

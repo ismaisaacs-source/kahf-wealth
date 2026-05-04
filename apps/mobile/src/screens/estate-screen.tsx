@@ -109,13 +109,13 @@ export function EstateScreen() {
         </View>
         <FormInput
           label="Jurisdiction"
-          value={draft.jurisdiction}
+          value={draft.jurisdiction ?? ""}
           onChangeText={(value) => setDraft((current) => ({ ...current, jurisdiction: value }))}
           placeholder="South Africa"
         />
         <FormInput
           label="Spouse name"
-          value={draft.spouseName}
+          value={draft.spouseName ?? ""}
           onChangeText={(value) => setDraft((current) => ({ ...current, spouseName: value }))}
           placeholder="Zaynab"
         />
@@ -134,13 +134,13 @@ export function EstateScreen() {
         <Text style={styles.sectionTitle}>Decision-makers</Text>
         <FormInput
           label="Executor"
-          value={draft.executorName}
+          value={draft.executorName ?? ""}
           onChangeText={(value) => setDraft((current) => ({ ...current, executorName: value }))}
           placeholder="Abdullah Trustee"
         />
         <FormInput
           label="Guardian for minors"
-          value={draft.guardianName}
+          value={draft.guardianName ?? ""}
           onChangeText={(value) => setDraft((current) => ({ ...current, guardianName: value }))}
           placeholder="Khadijah Guardian"
         />

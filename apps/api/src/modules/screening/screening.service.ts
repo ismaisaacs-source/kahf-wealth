@@ -19,6 +19,10 @@ import { RuntimeDocumentsService } from "../documents/runtime-documents.service"
 export class ScreeningService {
   private readonly documentsService = new RuntimeDocumentsService();
 
+  classify(input: ScreeningInput) {
+    return classifyAsset(input);
+  }
+
   search(query: string): ScreeningSearchResponse {
     const normalizedQuery = query.trim().toLowerCase();
     const matches = SCREENING_UNIVERSE.filter((asset) => {
@@ -74,7 +78,7 @@ export class ScreeningService {
     };
   }
 
-  async getWatchlist(userId: string): Promise<ScreeningWatchlistResponse> {
+  async getWatchlist(userId = "demo-user"): Promise<ScreeningWatchlistResponse> {
     const database = await readDatabase();
     const items = database.screeningWatchlist
       .filter((entry) => entry.userId === userId)
