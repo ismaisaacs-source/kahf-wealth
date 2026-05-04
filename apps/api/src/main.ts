@@ -57,7 +57,18 @@ const estateFoundationSchema: z.ZodType<EstateFoundationInput> = z.object({
 app.use(cors());
 app.use(express.json());
 app.use("/exports", express.static(resolveExportsDirectory()));
-
+app.get("/", (_request, response) => {
+  response.send(`
+    <html>
+      <head><title>Kahf Wealth</title></head>
+      <body style="font-family: Arial; padding: 40px;">
+        <h1>Kahf Wealth</h1>
+        <p>The Kahf Wealth API is live.</p>
+        <p><a href="/api/health">Check API health</a></p>
+      </body>
+    </html>
+  `);
+});
 app.get("/api/health", (_request, response) => {
   response.json({ ok: true, service: "kahf-api" });
 });
