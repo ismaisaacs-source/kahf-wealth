@@ -1,17 +1,20 @@
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack: (config) => {
+    const reactDir = path.dirname(require.resolve("react/package.json"));
+    const reactDomDir = path.dirname(require.resolve("react-dom/package.json"));
+
     config.resolve.alias = {
       ...(config.resolve.alias ?? {}),
-      react: path.join(__dirname, "node_modules/react"),
-      "react-dom": path.join(__dirname, "node_modules/react-dom"),
-      "react/jsx-runtime": path.join(__dirname, "node_modules/react/jsx-runtime.js"),
-      "react/jsx-dev-runtime": path.join(__dirname, "node_modules/react/jsx-dev-runtime.js"),
+      react: reactDir,
+      "react-dom": reactDomDir,
+      "react/jsx-runtime": path.join(reactDir, "jsx-runtime.js"),
+      "react/jsx-dev-runtime": path.join(reactDir, "jsx-dev-runtime.js"),
     };
 
     return config;
