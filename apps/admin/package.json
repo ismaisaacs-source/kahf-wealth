@@ -12,5 +12,11 @@
     "start": "next start -p ${PORT:-3000}",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "build": "next build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "typescript": "^5.8.3"
   }
 }
