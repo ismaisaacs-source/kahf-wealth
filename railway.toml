@@ -1,0 +1,7 @@
+[build]
+# Full monorepo install so tsconfig.base.json and packages/* are available,
+# then esbuild bundles @kahf/* workspace packages into apps/api/dist/main.js.
+buildCommand = "npm ci && npm --workspace apps/api run build:runtime"
+
+[deploy]
+startCommand = "node apps/api/dist/main.js"

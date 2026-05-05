@@ -1,0 +1,6 @@
+[build]
+# Admin has no @kahf workspace dependencies so a standalone install works fine.
+buildCommand = "npm install && npm run build"
+
+[deploy]
+startCommand = "npm start"
