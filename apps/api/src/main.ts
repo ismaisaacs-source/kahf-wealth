@@ -20,6 +20,12 @@ const profileService = new ProfileService();
 const screeningService = new ScreeningService();
 const subscriptionsService = new SubscriptionsService();
 const zakatService = new ZakatService();
+const allowedCorsOrigins = new Set([
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "http://localhost:4000",
+  "https://kahf.isaacslegal.co.za",
+]);
 
 const zakatSchema: z.ZodType<ZakatCalculationInput> = z.object({
   assets: z.array(
@@ -54,7 +60,18 @@ const estateFoundationSchema: z.ZodType<EstateFoundationInput> = z.object({
   bequestNotes: z.string().optional(),
 });
 
-app.use(cors());
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowedCorsOrigins.has(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      callback(new Error("Origin not allowed by CORS."));
+    },
+  }),
+);
 app.use(express.json());
 app.use("/exports", express.static(resolveExportsDirectory()));
 app.get("/", (_request, response) => {
@@ -71,6 +88,16 @@ app.get("/", (_request, response) => {
 });
 app.get("/api/health", (_request, response) => {
   response.json({ ok: true, service: "kahf-api" });
+});
+app.get("/api/users", (_request, response) => {
+  response.json([
+    {
+      id: "user_001",
+      email: "ismaeel@isaacslegal.co.za",
+      createdAt: "2026-05-05",
+      subscription: "admin",
+    },
+  ]);
 });
 
 app.post("/api/auth/session", async (request, response) => {
